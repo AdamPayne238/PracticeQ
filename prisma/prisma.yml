@@ -1,0 +1,12 @@
+
+#endpoint: ''
+endpoint: https://herokupractice-cf1e4183de.herokuapp.com/PracticeQ/dev
+
+datamodel: datamodel.prisma
+
+generate:
+    - generator: javascript-client
+      output: ./generated/prisma-client
+
+# seed:
+#     import: seed.graphql
