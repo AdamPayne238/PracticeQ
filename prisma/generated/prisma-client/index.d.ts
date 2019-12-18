@@ -237,6 +237,8 @@ export type PostOrderByInput =
   | "company_DESC"
   | "isPublished_ASC"
   | "isPublished_DESC"
+  | "position_lc_ASC"
+  | "position_lc_DESC"
   | "desc_lc_ASC"
   | "desc_lc_DESC"
   | "company_lc_ASC"
@@ -346,7 +348,8 @@ export interface PostCreateWithoutIndustryInput {
   description: String;
   reviewerID: String;
   company?: Maybe<String>;
-  isPublished: Boolean;
+  isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   tags?: Maybe<TagCreateManyWithoutPostsInput>;
@@ -520,6 +523,20 @@ export interface PostWhereInput {
   company_not_ends_with?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
   isPublished_not?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
+  position_lc_not?: Maybe<String>;
+  position_lc_in?: Maybe<String[] | String>;
+  position_lc_not_in?: Maybe<String[] | String>;
+  position_lc_lt?: Maybe<String>;
+  position_lc_lte?: Maybe<String>;
+  position_lc_gt?: Maybe<String>;
+  position_lc_gte?: Maybe<String>;
+  position_lc_contains?: Maybe<String>;
+  position_lc_not_contains?: Maybe<String>;
+  position_lc_starts_with?: Maybe<String>;
+  position_lc_not_starts_with?: Maybe<String>;
+  position_lc_ends_with?: Maybe<String>;
+  position_lc_not_ends_with?: Maybe<String>;
   desc_lc?: Maybe<String>;
   desc_lc_not?: Maybe<String>;
   desc_lc_in?: Maybe<String[] | String>;
@@ -609,6 +626,7 @@ export interface PostUpdateWithoutTagsDataInput {
   reviewerID?: Maybe<String>;
   company?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   ratingId?: Maybe<ID_Input>;
@@ -621,6 +639,7 @@ export interface PostUpdateWithoutIndustryDataInput {
   reviewerID?: Maybe<String>;
   company?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   tags?: Maybe<TagUpdateManyWithoutPostsInput>;
@@ -685,7 +704,8 @@ export interface PostCreateWithoutTagsInput {
   description: String;
   reviewerID: String;
   company?: Maybe<String>;
-  isPublished: Boolean;
+  isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   ratingId: ID_Input;
@@ -713,6 +733,7 @@ export interface PostUpdateManyMutationInput {
   reviewerID?: Maybe<String>;
   company?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   ratingId?: Maybe<ID_Input>;
@@ -895,6 +916,20 @@ export interface PostScalarWhereInput {
   company_not_ends_with?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
   isPublished_not?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
+  position_lc_not?: Maybe<String>;
+  position_lc_in?: Maybe<String[] | String>;
+  position_lc_not_in?: Maybe<String[] | String>;
+  position_lc_lt?: Maybe<String>;
+  position_lc_lte?: Maybe<String>;
+  position_lc_gt?: Maybe<String>;
+  position_lc_gte?: Maybe<String>;
+  position_lc_contains?: Maybe<String>;
+  position_lc_not_contains?: Maybe<String>;
+  position_lc_starts_with?: Maybe<String>;
+  position_lc_not_starts_with?: Maybe<String>;
+  position_lc_ends_with?: Maybe<String>;
+  position_lc_not_ends_with?: Maybe<String>;
   desc_lc?: Maybe<String>;
   desc_lc_not?: Maybe<String>;
   desc_lc_in?: Maybe<String[] | String>;
@@ -1029,6 +1064,7 @@ export interface PostUpdateManyDataInput {
   reviewerID?: Maybe<String>;
   company?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   ratingId?: Maybe<ID_Input>;
@@ -1051,6 +1087,7 @@ export interface PostUpdateInput {
   reviewerID?: Maybe<String>;
   company?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   tags?: Maybe<TagUpdateManyWithoutPostsInput>;
@@ -1065,6 +1102,7 @@ export interface PostUpdateDataInput {
   reviewerID?: Maybe<String>;
   company?: Maybe<String>;
   isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   tags?: Maybe<TagUpdateManyWithoutPostsInput>;
@@ -1150,7 +1188,8 @@ export interface PostCreateInput {
   description: String;
   reviewerID: String;
   company?: Maybe<String>;
-  isPublished: Boolean;
+  isPublished?: Maybe<Boolean>;
+  position_lc?: Maybe<String>;
   desc_lc?: Maybe<String>;
   company_lc?: Maybe<String>;
   tags?: Maybe<TagCreateManyWithoutPostsInput>;
@@ -1227,6 +1266,7 @@ export interface PostPreviousValues {
   updatedAt: DateTimeOutput;
   company?: String;
   isPublished: Boolean;
+  position_lc?: String;
   desc_lc?: String;
   company_lc?: String;
   ratingId: ID_Output;
@@ -1244,6 +1284,7 @@ export interface PostPreviousValuesPromise
   updatedAt: () => Promise<DateTimeOutput>;
   company: () => Promise<String>;
   isPublished: () => Promise<Boolean>;
+  position_lc: () => Promise<String>;
   desc_lc: () => Promise<String>;
   company_lc: () => Promise<String>;
   ratingId: () => Promise<ID_Output>;
@@ -1261,6 +1302,7 @@ export interface PostPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   company: () => Promise<AsyncIterator<String>>;
   isPublished: () => Promise<AsyncIterator<Boolean>>;
+  position_lc: () => Promise<AsyncIterator<String>>;
   desc_lc: () => Promise<AsyncIterator<String>>;
   company_lc: () => Promise<AsyncIterator<String>>;
   ratingId: () => Promise<AsyncIterator<ID_Output>>;
@@ -1410,6 +1452,7 @@ export interface Post {
   updatedAt: DateTimeOutput;
   company?: String;
   isPublished: Boolean;
+  position_lc?: String;
   desc_lc?: String;
   company_lc?: String;
   ratingId: ID_Output;
@@ -1426,6 +1469,7 @@ export interface PostPromise extends Promise<Post>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
   company: () => Promise<String>;
   isPublished: () => Promise<Boolean>;
+  position_lc: () => Promise<String>;
   desc_lc: () => Promise<String>;
   company_lc: () => Promise<String>;
   tags: <T = FragmentableArray<Tag>>(args?: {
@@ -1453,6 +1497,7 @@ export interface PostSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   company: () => Promise<AsyncIterator<String>>;
   isPublished: () => Promise<AsyncIterator<Boolean>>;
+  position_lc: () => Promise<AsyncIterator<String>>;
   desc_lc: () => Promise<AsyncIterator<String>>;
   company_lc: () => Promise<AsyncIterator<String>>;
   tags: <T = Promise<AsyncIterator<TagSubscription>>>(args?: {
@@ -1480,6 +1525,7 @@ export interface PostNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
   company: () => Promise<String>;
   isPublished: () => Promise<Boolean>;
+  position_lc: () => Promise<String>;
   desc_lc: () => Promise<String>;
   company_lc: () => Promise<String>;
   tags: <T = FragmentableArray<Tag>>(args?: {

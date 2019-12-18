@@ -9,7 +9,8 @@ type Post {
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
     company: String
-    isPublished: Boolean!
+    isPublished: Boolean! @default(value: true)
+    position_lc: String
     desc_lc: String
     company_lc: String
     tags: [Tag]!
@@ -40,4 +41,5 @@ type Tag {
 	name: String!
 	posts: [Post]!
 }
+
 

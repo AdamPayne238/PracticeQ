@@ -397,6 +397,7 @@ type Post {
   updatedAt: DateTime!
   company: String
   isPublished: Boolean!
+  position_lc: String
   desc_lc: String
   company_lc: String
   tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag!]
@@ -417,7 +418,8 @@ input PostCreateInput {
   description: String!
   reviewerID: String!
   company: String
-  isPublished: Boolean!
+  isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   tags: TagCreateManyWithoutPostsInput
@@ -446,7 +448,8 @@ input PostCreateWithoutIndustryInput {
   description: String!
   reviewerID: String!
   company: String
-  isPublished: Boolean!
+  isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   tags: TagCreateManyWithoutPostsInput
@@ -461,7 +464,8 @@ input PostCreateWithoutTagsInput {
   description: String!
   reviewerID: String!
   company: String
-  isPublished: Boolean!
+  isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   ratingId: ID!
@@ -491,6 +495,8 @@ enum PostOrderByInput {
   company_DESC
   isPublished_ASC
   isPublished_DESC
+  position_lc_ASC
+  position_lc_DESC
   desc_lc_ASC
   desc_lc_DESC
   company_lc_ASC
@@ -509,6 +515,7 @@ type PostPreviousValues {
   updatedAt: DateTime!
   company: String
   isPublished: Boolean!
+  position_lc: String
   desc_lc: String
   company_lc: String
   ratingId: ID!
@@ -611,6 +618,20 @@ input PostScalarWhereInput {
   company_not_ends_with: String
   isPublished: Boolean
   isPublished_not: Boolean
+  position_lc: String
+  position_lc_not: String
+  position_lc_in: [String!]
+  position_lc_not_in: [String!]
+  position_lc_lt: String
+  position_lc_lte: String
+  position_lc_gt: String
+  position_lc_gte: String
+  position_lc_contains: String
+  position_lc_not_contains: String
+  position_lc_starts_with: String
+  position_lc_not_starts_with: String
+  position_lc_ends_with: String
+  position_lc_not_ends_with: String
   desc_lc: String
   desc_lc_not: String
   desc_lc_in: [String!]
@@ -684,6 +705,7 @@ input PostUpdateDataInput {
   reviewerID: String
   company: String
   isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   tags: TagUpdateManyWithoutPostsInput
@@ -698,6 +720,7 @@ input PostUpdateInput {
   reviewerID: String
   company: String
   isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   tags: TagUpdateManyWithoutPostsInput
@@ -711,6 +734,7 @@ input PostUpdateManyDataInput {
   reviewerID: String
   company: String
   isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   ratingId: ID
@@ -735,6 +759,7 @@ input PostUpdateManyMutationInput {
   reviewerID: String
   company: String
   isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   ratingId: ID
@@ -776,6 +801,7 @@ input PostUpdateWithoutIndustryDataInput {
   reviewerID: String
   company: String
   isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   tags: TagUpdateManyWithoutPostsInput
@@ -790,6 +816,7 @@ input PostUpdateWithoutTagsDataInput {
   reviewerID: String
   company: String
   isPublished: Boolean
+  position_lc: String
   desc_lc: String
   company_lc: String
   ratingId: ID
@@ -926,6 +953,20 @@ input PostWhereInput {
   company_not_ends_with: String
   isPublished: Boolean
   isPublished_not: Boolean
+  position_lc: String
+  position_lc_not: String
+  position_lc_in: [String!]
+  position_lc_not_in: [String!]
+  position_lc_lt: String
+  position_lc_lte: String
+  position_lc_gt: String
+  position_lc_gte: String
+  position_lc_contains: String
+  position_lc_not_contains: String
+  position_lc_starts_with: String
+  position_lc_not_starts_with: String
+  position_lc_ends_with: String
+  position_lc_not_ends_with: String
   desc_lc: String
   desc_lc_not: String
   desc_lc_in: [String!]
